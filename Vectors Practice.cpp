@@ -15,24 +15,26 @@ int NumGenerator(int max, int min){
      return random;
 }
 
-void arrayFiller(int max, int min, vector<int> numList){
+void arrayFiller(int max, int min, vector<int> &numList){
 
     numList.resize(NumGenerator(max, min));
 
     for (int i = 0; i < numList.size(); i++){
 
         numList [i] = NumGenerator(max, min);
-        cout << numList [i] << endl;
     }
 
 
 }
 
-void arrayFiller2(int max, int min, vector<int> numList){
+void arrayFiller2(int max, int min, vector<int> &numList){
 
     while (NumGenerator(max, min)%50 != 0){
         numList.push_back (NumGenerator(max, min));
     }
+}
+
+void printArray (const vector<int> &numList){
 
     for (int i = 0; i < numList.size(); i++){
         cout << numList [i] << endl;
@@ -41,8 +43,10 @@ void arrayFiller2(int max, int min, vector<int> numList){
 }
 
 int main(){
+
     srand(time(NULL));
     vector<int> numList;
+    vector<int> numList2;
     int max;
     int min;
 
@@ -52,14 +56,15 @@ int main(){
     cout << "Enter Maximum value: ";
     cin >> max;
 
-    cout << NumGenerator (max, min) << endl << endl << "Array 1 values: " << endl;
+    cout << endl << endl << "first array values" << endl;
 
     arrayFiller(max, min, numList);
+    printArray (numList);
 
     cout << endl << endl << "Array 2 values: " << endl;
 
-    arrayFiller2 (max, min, numList);
-
+    arrayFiller2 (max, min, numList2);
+    printArray (numList2);
 
     return 0;
 
